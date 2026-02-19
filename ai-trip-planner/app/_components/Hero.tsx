@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
-import { Globe2, Icon, Landmark, Plane, Send } from 'lucide-react' 
+import { ArrowDown, Globe2, Icon, Landmark, Plane, Send } from 'lucide-react' 
 import React from 'react'
 import { HeroVideoDialog } from "@/components/ui/hero-video-dialog"
 const suggestions = [
@@ -27,7 +27,7 @@ function Hero() {
   return (
     <div className='mt-24 flex items-center justify-center'>
             {/* Content*/}
-            <div className='max-w-3xl w-full text-center space-y-6'>
+            <div className='max-w-3xl w-full text-center space-y-6 '>
                 <h1 className="text-xl md:text-5xl font-bold">Hey, I'm your <span className="text-primary">AI Trip Planner</span></h1>
                 <p className="text-md md:text-md mt-4">Plan your next trip with ease. Just tell me where you want to go and I'll take care of the rest:Flights, Hotels, Trip Planner - all in seconds</p>
 
@@ -51,16 +51,17 @@ function Hero() {
                     </div>
                 ))}
             </div>
-
+            <div className='flex items-center justify-center flex-col'>
+            <h2 className="my-7 mt-14 flex gap-2 items-center">Not sure where to start?<strong>See how it works</strong><ArrowDown className="h-4 w-4"/></h2>
             {/* Video Section */}
             <HeroVideoDialog
                  className="block dark:hidden"
                 animationStyle="from-center"
                 videoSrc="https://www.example.com/dummy-video"
-                thumbnailSrc="https://www.example.com/dummy-thumbnail.png"
+                thumbnailSrc="https://mma.prnewswire.com/media/2401528/1_MindtripProduct.jpg?p=facebook"
                 thumbnailAlt="Dummy Video Thumbnail"
 />
-
+            </div>
 
             </div>
     </div>
