@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Tapestry } from "next/font/google";
 import Provider from "./provider";
 import "./globals.css";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 
 export const metadata = {
   title: "AI Trip Planner",
@@ -18,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={tapestry.className}>
         <ClerkProvider>      {/* ← INSIDE body */}
-          <Provider>{children}</Provider>
+          <ConvexClientProvider>{children}</ConvexClientProvider>
         </ClerkProvider>
       </body>
     </html>
