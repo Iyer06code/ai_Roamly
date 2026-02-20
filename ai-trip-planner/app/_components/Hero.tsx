@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
             return
         }
         // Navigate to the trip planner page, possibly passing the input
-        router.push(`/trip-planner?dest=${encodeURIComponent(destination)}`)
+        router.push('/create-new-trip') // You can also pass the destination as a query parameter if needed
     }
 
     return (

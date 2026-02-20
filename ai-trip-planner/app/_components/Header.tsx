@@ -1,8 +1,9 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/dist/client/link'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { SignInButton } from '@clerk/nextjs'
+import { SignInButton, UserButton, useUser } from '@clerk/nextjs'
 
 const menuOptions = [
     { name: "Home", path: "/" },
@@ -11,6 +12,8 @@ const menuOptions = [
 ]
 
 function Header() {
+  const { isSignedIn } = useUser()
+
   return (
     <div className="w-full flex items-center justify-between py-4 px-6 bg-white shadow-md">
     {/*logo*/}
@@ -21,15 +24,21 @@ function Header() {
     {/*Menu Options*/}
     <div className="flex gap-9 items-center">
         {menuOptions.map((menu, index) => (
-            <Link href={menu.path}>
+            <Link key={index} href={menu.path}>
                 <h2 className="text-lg hover:scale-105 transition-all hover:text-primary">{menu.name}</h2>
             </Link>
         ))}
     </div>
     {/*Get started button*/}
-    <SignInButton mode="modal">
-    <Button className="ml-4">Get Started</Button>
+    {isSignedIn ? (
+        <UserButton afterSignOutUrl="/" />
+    ) : (
+        <SignInButton mode="modal">
+            <Link href={'/create-new-trip'}>
+            <Button className="ml-4">Create New Trip</Button>
+            </Link>
         </SignInButton>
+    )}
     </div>
   )
 }
